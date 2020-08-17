@@ -175,6 +175,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_marginTop="@dimen/dimText"
                 android:gravity="center"
+                android:id="@+id/txtNoSnitch"
                 />
         </LinearLayout>
     </ScrollView>

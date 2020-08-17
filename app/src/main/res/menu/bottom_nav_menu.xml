@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_campionati"
+        android:icon="@drawable/ic_campionati"
+        android:title="@string/title_campionati" />
+
+    <item
+        android:id="@+id/navigation_completati"
+        android:icon="@drawable/ic_completati"
+        android:title="@string/title_completati" />
+
+</menu>

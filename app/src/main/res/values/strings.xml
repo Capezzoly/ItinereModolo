@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Itinere Modolo</string>
+    <string name="title_campionati">Campionati</string>
+    <string name="title_completati">Completati</string>
+    <string name="ph_accountname">ACCOUNT</string>
+    <string name="ph_imageviewdescription">IMGview</string>
+    <string name="ph_subscription">ISCRITTO</string>
+    <string name="ph_campionato">CAMPIONATO</string>
+    <string name="forgotPsw"><u>Password dimenticata?</u></string>
+    <string name="newAccount1">Non hai un account?</string>
+    <string name="newAccount2"> <u>Registrati ora</u></string>
+</resources>

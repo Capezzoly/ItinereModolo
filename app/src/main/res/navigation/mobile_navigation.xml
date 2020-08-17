@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/campionatiFragment">
+    <fragment
+        android:id="@+id/campionatiFragment"
+        android:name="com.modolo.itineremodolo.ui.campionati.CampionatiFragment"
+        android:label="campionati_fragment"
+        tools:layout="@layout/campionati_fragment" />
+    <fragment
+        android:id="@+id/completatiFragment"
+        android:name="com.modolo.itineremodolo.ui.completati.CompletatiFragment"
+        android:label="completati_fragment"
+        tools:layout="@layout/completati_fragment" />
+</navigation>

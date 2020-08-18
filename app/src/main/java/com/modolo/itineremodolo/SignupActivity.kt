@@ -14,7 +14,6 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-
         txtBirthDate.setOnClickListener{
             DatePickerDialog(
                 this,
@@ -26,7 +25,6 @@ class SignupActivity : AppCompatActivity() {
                 1
             ).show()
         }
-
 
         btnSignup.setOnClickListener {
             /*

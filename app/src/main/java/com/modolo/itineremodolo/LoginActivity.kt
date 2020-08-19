@@ -5,21 +5,51 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.res.ResourcesCompat
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_login.*
+import java.io.File
+import java.io.FileWriter
+
 
 class LoginActivity : AppCompatActivity() {
 
-    val listTypeUsers = Types.newParameterizedType(
-        List::class.java, Users::class.java
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        //*********************************************************
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "users.json")
+        Log.i("data", jsonFileString)
+
+        val gson = Gson()
+        val listUserType = object : TypeToken<List<User>>() {}.type
+
+        val users: MutableList<User> = gson.fromJson(jsonFileString, listUserType)
+        users.forEachIndexed { idx, user -> Log.i("data", "> Item $idx:\n$user") }
+
+        val newuser = User(
+            "Tereziu",
+            "29/02/1998",
+            "Maggiolino",
+            "Tondo",
+            "Quadrato",
+            "miraxh@gmail.com",
+            "Miraxh",
+            "45",
+            "userscarso"
+        )
+        users.add(newuser)
+        users?.forEach{
+            Log.i("data", it.toString())
+        }
+
+        var gson2 = Gson()
+        var jsonString:String = gson2.toJson(newuser)
+        val file= File("users.json")
+        file.writeText(jsonString)
+
+        //*******************************************************
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -27,20 +57,9 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "LOGIN CON SOCIAL NON DISPONIBILE", Toast.LENGTH_SHORT).show()
 
         }
-        var listaUtenti = getUsers()
 
         btnLogin.setOnClickListener {
             var login = false
-            listaUtenti?.forEach {
-                if (it.mail == txtLoginEmail.text.toString()) {
-                    if (it.psw == (txtLoginPsw.text.toString())) {//LOGIN CORRETTO
-                        login = true
-                        val intent = Intent(baseContext, MainActivity::class.java)
-                        this.finish()
-                        startActivity(intent)
-                    }
-                }
-            }
             if(!login) {
                 txtLoginEmail.background =
                     ResourcesCompat.getDrawable(this.resources, R.drawable.little_box_error, null)
@@ -51,30 +70,16 @@ class LoginActivity : AppCompatActivity() {
         }
 
         txtForgotPsw.setOnClickListener {
-            listaUtenti?.forEach {
-                if (it.mail == txtLoginEmail.text.toString()) {
-                        val intent = Intent(baseContext, MainActivity::class.java)
-                        this.finish()
-                        startActivity(intent)
-                }
+            var ok = false
+            if(!ok){
+                txtLoginEmail.background =
+                    ResourcesCompat.getDrawable(this.resources, R.drawable.little_box_error, null)
+                Toast.makeText(this, "PROFILO NON TROVATO, RIPROVA", Toast.LENGTH_SHORT).show()
             }
         }
-
         newAccount2.setOnClickListener {
             val intent = Intent(baseContext, SignupActivity::class.java)
             startActivity(intent)
         }
-    }
-    fun getUsers(): List<Users>? {
-        val text = FileHelper.getData(this, "users.json")
-        return parserUser(text)
-    }
-
-    fun parserUser(text: String) : List<Users>? {
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        val adapter: JsonAdapter<List<Users>> = moshi.adapter(listTypeUsers)
-        return adapter.fromJson(text)
     }
 }

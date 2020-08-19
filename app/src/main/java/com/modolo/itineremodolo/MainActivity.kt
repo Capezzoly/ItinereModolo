@@ -32,12 +32,9 @@ class MainActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener(navigationListener)
 
         fab.setOnClickListener {
-            /*
-            passare all'activity registrati "1 per dire che c'è un login attivo"
-            e poi nel caricare il registrati if(login) blocca certi campi e scegli il testo
-             */
             val intent = Intent(baseContext, SignupActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

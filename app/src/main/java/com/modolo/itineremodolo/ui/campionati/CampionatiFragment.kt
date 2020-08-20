@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.modolo.itineremodolo.*
 
 
-class CampionatiFragment : Fragment(), ChampAdapter.ChampListener, AdapterView.OnItemSelectedListener {
+class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
+    AdapterView.OnItemSelectedListener {
     var championships = mutableListOf<Champ>()
+
     companion object {
         fun newInstance() =
             CampionatiFragment()
@@ -25,11 +27,11 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener, AdapterView.O
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.campionati_fragment, container, false)
+        val view = inflater.inflate(R.layout.campionati_fragment, container, false)
         createDummyData()
         val champs = view.findViewById<RecyclerView>(R.id.championships)
         var adapterChamps = ChampAdapter(requireContext(), championships, this)
-        champs.adapter=adapterChamps
+        champs.adapter = adapterChamps
 
 
         return view
@@ -41,11 +43,11 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener, AdapterView.O
         // TODO: Use the ViewModel
     }
 
-    fun createDummyData(){
-        championships.add(Champ(0,"CAMPIONATO 0","todo",4,6,true))
-        championships.add(Champ(1,"CAMPIONATO 1","todo",8,1,false))
-        championships.add(Champ(2,"CAMPIONATO 2","todo",4,6,true))
-        championships.add(Champ(3,"CAMPIONATO 3","todo",8,1,false))
+    fun createDummyData() {
+        championships.add(Champ(0, "CAMPIONATO 0", "todo", 4, 6, true))
+        championships.add(Champ(1, "CAMPIONATO 1", "todo", 8, 1, false))
+        championships.add(Champ(2, "CAMPIONATO 2", "todo", 4, 6, true))
+        championships.add(Champ(3, "CAMPIONATO 3", "todo", 8, 1, false))
 
     }
 

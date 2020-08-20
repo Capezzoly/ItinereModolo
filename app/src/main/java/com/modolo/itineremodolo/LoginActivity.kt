@@ -27,11 +27,11 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        imgSocial.setOnClickListener {
-            Toast.makeText(this, "LOGIN CON SOCIAL", Toast.LENGTH_SHORT).show()
-        }
 
         btnLogin.setOnClickListener {
+            txtLoginEmail.background =
+                ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
+            txtLoginPsw.background = txtLoginEmail.background
             var login = false
             loginViewModel.userList.observe(this, Observer { it ->
                 it.forEach {
@@ -43,32 +43,39 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(intent)
                             this.finish()
                             return@forEach
-                        }
-                        else{
+                        } else {
+                            login = true
                             Toast.makeText(this, "PASSWORD ERRATA", Toast.LENGTH_SHORT).show()
                             txtLoginPsw.background =
-                                ResourcesCompat.getDrawable(this.resources, R.drawable.little_box_error, null)
+                                ResourcesCompat.getDrawable(
+                                    this.resources,
+                                    R.drawable.little_box_error,
+                                    null
+                                )
                             return@forEach
                         }
                     }
                 }
             })
-            if(!login) {
+            if (!login) {
                 Toast.makeText(this, "PROFILO NON TROVATO", Toast.LENGTH_SHORT).show()
                 txtLoginEmail.background =
                     ResourcesCompat.getDrawable(this.resources, R.drawable.little_box_error, null)
-                txtLoginPsw.background =
-                    ResourcesCompat.getDrawable(this.resources, R.drawable.little_box_error, null)
+                txtLoginPsw.background = txtLoginEmail.background
             }
-            }
+        }
 
+        newAccount2.setOnClickListener {
+            val intent = Intent(baseContext, SignupActivity::class.java)
+            startActivity(intent)
+        }
 
         txtForgotPsw.setOnClickListener {
             Toast.makeText(this, "PASSWORD DIMENTICATA", Toast.LENGTH_SHORT).show()
         }
-        newAccount2.setOnClickListener {
-            val intent = Intent(baseContext, SignupActivity::class.java)
-            startActivity(intent)
+
+        imgSocial.setOnClickListener {
+            Toast.makeText(this, "LOGIN CON SOCIAL", Toast.LENGTH_SHORT).show()
         }
     }
 }

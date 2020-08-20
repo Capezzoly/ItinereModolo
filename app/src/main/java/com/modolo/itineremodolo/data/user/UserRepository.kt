@@ -1,17 +1,14 @@
 package com.modolo.itineremodolo.data.user
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class UserRepository(val app: Application) {
     var userData = MutableLiveData<List<User>>()
     var userFound = MutableLiveData<User>()
-    var session = MutableLiveData<Boolean>()
     private val userDAO = UserDatabase.getDatabase(app)
         .userDAO()
 
@@ -20,53 +17,39 @@ class UserRepository(val app: Application) {
             val data: List<User>? = userDAO.getAll()
             if (data.isNullOrEmpty()) {
                 //caso in cui il db sia vuoto
-                Log.i("conan", "if")
                 dummyData()
             } else {
                 //caso in cui il db abbia delle entry
-                Log.i("conan", "else")
                 userData.postValue(data)
-                withContext(Dispatchers.Main) {
-                    //do not delete
-                }
             }
         }
     }
 
-    fun insertUser(user: User){
+    fun insertUser(user: User) {
         CoroutineScope(Dispatchers.IO).launch {
             userDAO.insertUser(user)
         }
     }
-    fun session() {
-        CoroutineScope(Dispatchers.IO).launch {
-            var s = false
-            if (userDAO.session() >= 1)
-                s = true
-            Log.i("debug2", "result: $s")
-            session.postValue(s)
-        }
-    }
 
-    fun logout(){
+    fun logout() {
         CoroutineScope(Dispatchers.IO).launch {
             userDAO.logout()
         }
     }
 
-    fun login(mail: String){
+    fun login(mail: String) {
         CoroutineScope(Dispatchers.IO).launch {
             userDAO.login(mail)
         }
     }
 
-    fun deleteUser(user: User){
+    fun deleteUser(user: User) {
         CoroutineScope(Dispatchers.IO).launch {
             userDAO.deleteUser(user)
         }
     }
 
-    fun getUser(mail: String){
+    fun getUser(mail: String) {
         CoroutineScope(Dispatchers.IO).launch {
             userFound.postValue(userDAO.getUser(mail))
         }

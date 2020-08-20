@@ -1,6 +1,6 @@
 package com.modolo.itineremodolo
 
-data class Champ (
+data class Champ(
     var ID: Int,
     var nome: String,
     var logo: String,

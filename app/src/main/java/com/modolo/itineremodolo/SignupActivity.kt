@@ -39,15 +39,15 @@ class SignupActivity : AppCompatActivity() {
                     hateCircuit.setText(it.hcir)
                     btnSignup.text = "SALVA MODIFICHE"
                     txtNoSnitch.text = "LOGOUT"
+                    return@forEach
                 }
             }
         })
 
-
         txtBirthDate.setOnClickListener {
             DatePickerDialog(
                 this,
-                DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                { _, year, month, dayOfMonth ->
                     txtBirthDate.text = "$dayOfMonth/${month + 1}/$year"
                 },
                 1970,
@@ -56,67 +56,81 @@ class SignupActivity : AppCompatActivity() {
             ).show()
         }
         btnSignup.setOnClickListener {
-            if(btnSignup.text == "SALVA MODIFICHE"){
-                val mod = User(txtSignupEmail.text.toString(), 1, txtSignupPsw1.text.toString(), txtName.text.toString(), txtSurname.text.toString(), txtBirthDate.text.toString(), favNumber.text.toString(), favCircuit.text.toString(), hateCircuit.text.toString(), favCar.text.toString())
+            if (btnSignup.text == "SALVA MODIFICHE") {
+                val mod = User(
+                    txtSignupEmail.text.toString(),
+                    1,
+                    txtSignupPsw1.text.toString(),
+                    txtName.text.toString(),
+                    txtSurname.text.toString(),
+                    txtBirthDate.text.toString(),
+                    favNumber.text.toString(),
+                    favCircuit.text.toString(),
+                    hateCircuit.text.toString(),
+                    favCar.text.toString()
+                )
                 loginViewModel.deleteUser(mod)
                 loginViewModel.insertUser(mod)
                 this.finish()
-            }
-            else {
-                txtSignupPsw1.background =
-                    ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
-                txtSignupPsw2.background =
-                    ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
+            } else {
                 txtSignupEmail.background =
                     ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
+                txtSignupPsw1.background = txtSignupEmail.background
+                txtSignupPsw2.background = txtSignupEmail.background
 
 
-                var ok = true
+                var signup = true
                 if (txtSignupEmail.text.toString() == "") {
-                    ok = false
+                    signup = false
                     txtSignupEmail.background = ResourcesCompat.getDrawable(
                         this.resources,
                         R.drawable.little_box_error,
                         null
                     )
                 }
-                if (txtSignupPsw2.text.toString() != txtSignupPsw1.text.toString() || txtSignupPsw1.text.toString() == "") {
-                    txtSignupPsw2.background =
-                        ResourcesCompat.getDrawable(
-                            this.resources,
-                            R.drawable.little_box_error,
-                            null
-                        )
+                if (txtSignupPsw1.text.toString() != txtSignupPsw2.text.toString() || txtSignupPsw1.text.toString() == "") {
                     txtSignupPsw1.background =
                         ResourcesCompat.getDrawable(
                             this.resources,
                             R.drawable.little_box_error,
                             null
                         )
+                    txtSignupPsw2.background = txtSignupPsw1.background
                     if (txtSignupPsw1.text.toString() != "")
                         Toast.makeText(this, "LE PASSWORD NON COINCIDONO", Toast.LENGTH_SHORT)
                             .show()
-                    ok = false
+                    signup = false
                 }
-                if (ok) {
+                if (signup) {
+                    val new = User(
+                        txtSignupEmail.text.toString(),
+                        1,
+                        txtSignupPsw1.text.toString(),
+                        txtName.text.toString(),
+                        txtSurname.text.toString(),
+                        txtBirthDate.text.toString(),
+                        favNumber.text.toString(),
+                        favCircuit.text.toString(),
+                        hateCircuit.text.toString(),
+                        favCar.text.toString()
+                    )
+                    loginViewModel.insertUser(new)
                     val intent = Intent(baseContext, MainActivity::class.java)
                     this.finish()
                     startActivity(intent)
                 } else {
-                    scrollView.smoothScrollTo(0, 0);
+                    scrollView.smoothScrollTo(0, 0)
                 }
             }
         }
 
         txtNoSnitch.setOnClickListener {
-            if(txtNoSnitch.text == "LOGOUT")
-            {
+            if (txtNoSnitch.text == "LOGOUT") {
                 loginViewModel.logout()
                 val intent = Intent(this, LoginActivity::class.java)
                 this.startActivity(intent)
                 finishAffinity()
-            }
-            else {
+            } else {
                 val openURL = Intent(Intent.ACTION_VIEW)
                 openURL.data = Uri.parse("http://www.simcareer.org/")
                 startActivity(openURL)

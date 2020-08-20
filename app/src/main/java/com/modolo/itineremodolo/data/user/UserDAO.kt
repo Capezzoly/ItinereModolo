@@ -16,15 +16,13 @@ interface UserDAO {
 
     @Insert
     suspend fun insertUser(user: User)
+
     @Delete
     suspend fun deleteUser(user: User)
 
     //Salviamo l'utente che ha fatto login
     @Query("UPDATE users SET sess = 1 WHERE mail=:mail")
     suspend fun login(mail: String)
-
-    @Query("SELECT COUNT(mail) FROM users WHERE sess = 1")
-    suspend fun session() : Int
 
     @Query("UPDATE users SET sess = 0 WHERE sess=1")
     suspend fun logout()

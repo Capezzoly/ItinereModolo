@@ -30,7 +30,7 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
         val view = inflater.inflate(R.layout.campionati_fragment, container, false)
         createDummyData()
         val champs = view.findViewById<RecyclerView>(R.id.championships)
-        var adapterChamps = ChampAdapter(requireContext(), championships, this)
+        val adapterChamps = ChampAdapter(requireContext(), championships, this)
         champs.adapter = adapterChamps
 
 

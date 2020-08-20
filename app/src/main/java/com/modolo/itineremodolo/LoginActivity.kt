@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
                 ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
             txtLoginPsw.background = txtLoginEmail.background
             var login = false
-            loginViewModel.userList.observe(this, Observer { it ->
+            loginViewModel.userList.observe(this, Observer {
                 it.forEach {
                     if (it.mail == txtLoginEmail.text.toString()) {
                         if (it.pass == txtLoginPsw.text.toString()) {

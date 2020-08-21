@@ -8,7 +8,7 @@
         android:id="@+id/galleria_image_layout"
         android:layout_width="220dp"
         android:layout_height="150dp"
-        android:layout_marginRight="@dimen/dimMarginPadding"
+        android:layout_marginEnd="@dimen/dimMarginPadding"
         android:layout_marginVertical="@dimen/dimMarginPadding"
         android:translationZ="10dp"
         app:cardCornerRadius="@dimen/dimRadius"
@@ -21,6 +21,7 @@
             android:id="@+id/galleria_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/ph_imageviewdescription"
             android:backgroundTint="@color/colorPrimary"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>

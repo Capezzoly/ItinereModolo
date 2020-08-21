@@ -4,6 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChampionshipActivity">
+    tools:context=".championships.ChampionshipActivity">
+
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TITOLO"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimTitle"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btnIscriviti"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:padding="@dimen/dimMarginPadding"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".championships.ChampionshipActivity">
+
+            <TextView
+                android:id="@+id/txtTitleRacesTODO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GARE DA DISPUTARE"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimText"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewRacesTODO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleRacesTODO" />
+
+            <TextView
+                android:id="@+id/txtTitleRacesDONE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GARE DISPUTATE"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimText"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewRacesTODO" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewRacesDONE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleRacesDONE" />
+
+            <TextView
+                android:id="@+id/txtTitleGallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GALLERIA"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimText"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewRacesDONE" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewGallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleGallery" />
+
+            <TextView
+                android:id="@+id/txtTiteRacers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ISCRITTI"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimText"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewGallery" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewRacers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTiteRacers" />
+
+            <TextView
+            android:id="@+id/txtTitleRankingP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RANKING PILOTI"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimText"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewRacers" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewRankingP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleRankingP" />
+
+            <TextView
+                android:id="@+id/txtTitleRankingR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RANKING SQUADRE"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimText"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewRankingP" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewRankingR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleRankingR" />
+
+            <TextView
+                android:id="@+id/txtTitleSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IMPOSTAZIONI"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimText"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewRankingR" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/viewSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleSettings" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/dimMarginPadding"
+        android:text="ISCRIVITI"
+        android:background="@drawable/subscribed_box"
+        android:textSize="@dimen/dimText"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:padding="@dimen/dimMarginPadding"
+        android:id="@+id/btnIscriviti"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

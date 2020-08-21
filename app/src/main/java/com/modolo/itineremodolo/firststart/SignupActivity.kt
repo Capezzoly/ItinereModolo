@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.firststart
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -11,6 +11,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.modolo.itineremodolo.MainActivity
+import com.modolo.itineremodolo.R
 import com.modolo.itineremodolo.data.user.User
 import kotlinx.android.synthetic.main.activity_sign_up.*
 

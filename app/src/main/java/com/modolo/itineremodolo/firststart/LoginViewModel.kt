@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.firststart
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

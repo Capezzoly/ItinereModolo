@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.championships
 
 data class Champ(
     var ID: Int,

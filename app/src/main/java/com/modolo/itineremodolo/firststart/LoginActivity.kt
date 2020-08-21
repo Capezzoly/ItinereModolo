@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.firststart
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.modolo.itineremodolo.MainActivity
+import com.modolo.itineremodolo.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 

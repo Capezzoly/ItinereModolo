@@ -1,7 +1,8 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.championships
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.modolo.itineremodolo.R
 
 class ChampionshipActivity : AppCompatActivity() {
 

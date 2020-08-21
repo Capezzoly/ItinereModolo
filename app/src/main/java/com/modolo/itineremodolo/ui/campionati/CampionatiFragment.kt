@@ -10,6 +10,9 @@ import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.modolo.itineremodolo.*
+import com.modolo.itineremodolo.championships.Champ
+import com.modolo.itineremodolo.championships.ChampAdapter
+import com.modolo.itineremodolo.championships.ChampionshipActivity
 
 
 class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,

@@ -8,5 +8,6 @@
     <dimen name="dimRadius">10dp</dimen>
     <dimen name="dimStroke">3dp</dimen>
     <dimen name="dimText">20sp</dimen>
+    <dimen name="dimTitle">32sp</dimen>
 
 </resources>

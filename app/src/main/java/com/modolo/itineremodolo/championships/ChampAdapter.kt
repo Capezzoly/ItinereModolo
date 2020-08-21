@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.championships
 
 import android.content.Context
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.modolo.itineremodolo.R
 
 
 class ChampAdapter(
@@ -51,7 +52,7 @@ class ChampAdapter(
 
             }
 
-            registered.setOnClickListener {
+            /*registered.setOnClickListener {
                 if (registered.text == "ISCRITTO") {
                     registered.setTextColor(Color.BLACK)
                     registered.text = "ISCRIVITI"
@@ -66,7 +67,7 @@ class ChampAdapter(
                         null
                     )
                 }
-            }
+            }*/
 
             holder.itemView.setOnClickListener {
                 champListener.onChampListener(championship, holder.layoutPosition)

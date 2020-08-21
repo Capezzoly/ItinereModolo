@@ -27,5 +27,8 @@ interface UserDAO {
     @Query("UPDATE users SET sess = 0 WHERE sess=1")
     suspend fun logout()
 
+    @Query("UPDATE users SET name =:name, surn=:surn, data=:data, numb=:numb, fcir=:fcir, hcir=:hcir, fcar=:fcar WHERE sess=1")
+    suspend fun updateUser(name: String, surn: String, data: String, numb: String, fcir: String, hcir: String, fcar: String)
+
 
 }

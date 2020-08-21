@@ -69,8 +69,7 @@ class SignupActivity : AppCompatActivity() {
                     hateCircuit.text.toString(),
                     favCar.text.toString()
                 )
-                loginViewModel.deleteUser(mod)
-                loginViewModel.insertUser(mod)
+                loginViewModel.updateUser(mod)
                 this.finish()
             } else {
                 txtSignupEmail.background =

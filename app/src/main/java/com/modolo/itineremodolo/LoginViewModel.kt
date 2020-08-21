@@ -26,6 +26,10 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
         db.deleteUser(user)
     }
 
+    fun updateUser(user: User){
+        db.updateUser(user)
+    }
+
     fun logout() {
         db.logout()
     }

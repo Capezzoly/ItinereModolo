@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -79,8 +80,10 @@ class SignupActivity : AppCompatActivity() {
 
 
                 var signup = true
-                if (txtSignupEmail.text.toString() == "") {
+                if (txtSignupEmail.text.toString() == "" || !txtSignupEmail.text.toString().isEmailValid()) {
                     signup = false
+                    Toast.makeText(this, "FORMATO MAIL ERRATO", Toast.LENGTH_SHORT)
+                        .show()
                     txtSignupEmail.background = ResourcesCompat.getDrawable(
                         this.resources,
                         R.drawable.little_box_error,
@@ -100,6 +103,20 @@ class SignupActivity : AppCompatActivity() {
                             .show()
                     signup = false
                 }
+                loginViewModel.userList.observe(this, Observer { it ->
+                    it.forEach {
+                        if (it.mail == txtSignupEmail.text.toString()) {
+                            signup = false
+                            Toast.makeText(this, "MAIL GIA' PRESENTE", Toast.LENGTH_SHORT).show()
+                            txtSignupEmail.background = ResourcesCompat.getDrawable(
+                                this.resources,
+                                R.drawable.little_box_error,
+                                null
+                            )
+                            return@forEach
+                        }
+                    }
+                })
                 if (signup) {
                     val new = User(
                         txtSignupEmail.text.toString(),
@@ -135,6 +152,9 @@ class SignupActivity : AppCompatActivity() {
                 startActivity(openURL)
             }
         }
+    }
+    fun String.isEmailValid(): Boolean {
+        return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
 }

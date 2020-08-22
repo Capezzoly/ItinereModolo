@@ -1,9 +1,7 @@
 package com.modolo.itineremodolo.championships
 
 import android.content.Context
-import android.content.res.AssetManager
 import android.graphics.Color
-import android.os.ParcelFileDescriptor.open
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +10,10 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.google.gson.JsonElement
-import com.google.gson.reflect.TypeToken
 import com.modolo.itineremodolo.R
-import java.io.File
-import java.io.FileReader
-import java.nio.channels.AsynchronousFileChannel.open
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 
 
 class ChampAdapter(
@@ -35,26 +31,35 @@ class ChampAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
 
-        /*
+
 
 
         val file_name = "campionati.json"
-        val json_string = context.assets.open(file_name).bufferedReader().use{
-            it.readText()
-        }
+        //val json_string = context.assets.open(file_name).bufferedReader().use{
+            //it.readText()
+        //}
         //Log.i("tazza", json_string)
 
-        val gson = Gson()
+        //val gson = Gson()
         //val tutorial_2: Campionati = gson.fromJson(FileReader(file_name), Campionati::class.java)
         //Log.i("tazza","> From JSON File:\n" + tutorial_2)
 
-        val listTutorialType = object : TypeToken<List<Campionati>>() {}.type
-        var tutorials: Array<Campionati> = gson.fromJson(file_name, listTutorialType)
-        Log.i("tazza", tutorials.toString())
+        //val listTutorialType = object : TypeToken<List<Campionati>>() {}.type
+        //var tutorials: List<Campionati> = gson.fromJson(file_name, listTutorialType)
+        //Log.i("tazza", tutorials.toString())
 
+        //val topic = Gson().fromJson(file_name, Json4KotlinBase::class.java)
+        //Log.i("tazza", topic.toString())
 
         //https://bezkoder.com/kotlin-parse-json-gson/
-        */
+
+
+
+
+
+
+        //***************************
+
 
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_campionato, parent, false)

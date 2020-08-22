@@ -13,7 +13,7 @@ package com.modolo.itineremodolo.championships
 
 data class Calendario (
 
-	val seq : Int,
+	val seq : String,
 	val data : String,
 	val circuito : String
 )

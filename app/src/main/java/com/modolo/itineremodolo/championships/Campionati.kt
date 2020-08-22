@@ -13,11 +13,11 @@ package com.modolo.itineremodolo.championships
 
 data class Campionati (
 
-	val id : Int,
+	val id : String,
 	val nome : String,
 	val logo : String,
-	val calendario : List<Calendario>,
-	val impostazioni_gioco : List<Impostazioni_gioco>,
-	val lista_auto : String,
-	val piloti_iscritti : List<Piloti_iscritti>
+	val calendario : MutableList<Calendario>,
+	val impostazioni : MutableList<Impostazionigioco>,
+	val listaauto : String,
+	val pilotiiscritti : MutableList<Pilotiiscritti>
 )

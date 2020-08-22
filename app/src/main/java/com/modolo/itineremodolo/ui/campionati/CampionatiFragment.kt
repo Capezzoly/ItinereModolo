@@ -2,6 +2,7 @@ package com.modolo.itineremodolo.ui.campionati
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,11 @@ import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.modolo.itineremodolo.*
-import com.modolo.itineremodolo.championships.Champ
-import com.modolo.itineremodolo.championships.ChampAdapter
-import com.modolo.itineremodolo.championships.ChampionshipActivity
+import com.modolo.itineremodolo.championships.*
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 
 class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
@@ -25,7 +28,9 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
     }
 
     private lateinit var viewModel: CampionatiViewModel
-
+    val listTypeCampionati = Types.newParameterizedType(
+        List::class.java, Campionati::class.java
+    )
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +41,14 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
         val adapterChamps = ChampAdapter(requireContext(), championships, this)
         champs.adapter = adapterChamps
 
+
+        val text = FileHelper.getData(requireContext(), "campionati.json")
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        val adapter: JsonAdapter<List<Campionati>> = moshi.adapter(listTypeCampionati)
+        val campionati: List<Campionati>? = adapter.fromJson(text)
+        Log.i("tazza", campionati.toString())
 
         return view
     }

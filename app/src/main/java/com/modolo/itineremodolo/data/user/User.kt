@@ -15,5 +15,6 @@ data class User(
     val numb: String,
     val fcir: String,
     val hcir: String,
-    val fcar: String
+    val fcar: String,
+    val iscr: String
 )

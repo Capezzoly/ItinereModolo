@@ -7,7 +7,8 @@
     <dimen name="dimMarginPadding">8dp</dimen>
     <dimen name="dimRadius">10dp</dimen>
     <dimen name="dimStroke">3dp</dimen>
-    <dimen name="dimText">20sp</dimen>
+    <dimen name="dimText">16sp</dimen>
     <dimen name="dimTitle">32sp</dimen>
+    <dimen name="dimSubTitle">24sp</dimen>
 
 </resources>

@@ -1,10 +1,9 @@
-{
-  "campionati": [
+[
     {
       "id": "0",
       "nome": "Leon Supercopa",
       "logo": "logo-champ-0.png",
-      "classifica-piloti": [
+      "classificapiloti": [
         {
           "nome": "Roberto Cosi",
           "team": "Busters eRacing Team",
@@ -42,7 +41,7 @@
           "punti": 25
         }
       ],
-      "classifica-team": [
+      "classificateam": [
         {
           "team": "Busters eRacing Team",
           "auto": "Seat Leon",
@@ -69,7 +68,7 @@
       "id": "1",
       "nome": "International TCT",
       "logo": "logo-champ-1.png",
-      "classifica-piloti": [
+      "classificapiloti": [
         {
           "nome": "Gianluca De Matteo",
           "team": "Busters eRacing Team",
@@ -107,7 +106,7 @@
           "punti": 54
         }
       ],
-      "classifica-team": [
+      "classificateam": [
         {
           "team": "Busters eRacing Team",
           "auto": "Honda Civic",
@@ -131,4 +130,3 @@
       ]
     }
   ]
-}

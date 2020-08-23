@@ -28,7 +28,8 @@ class UserRepository(val app: Application) {
                         "45",
                         "Circuito Preferito",
                         "Circuito Odiato",
-                        "Maggiolino"
+                        "Maggiolino",
+                        ""
                     )
                 )
                 userDAO.insertUser(
@@ -42,7 +43,8 @@ class UserRepository(val app: Application) {
                         "69",
                         "Circuito Preferito",
                         "Circuito Odiato",
-                        "Batmobile"
+                        "Batmobile",
+                        ""
                     )
                 )
                 userDAO.insertUser(
@@ -56,7 +58,8 @@ class UserRepository(val app: Application) {
                         "420",
                         "Circuito Preferito",
                         "Circuito Odiato",
-                        "Hotweels"
+                        "Hotweels",
+                        ""
                     )
                 )
                 val data2: List<User>? = userDAO.getAll()

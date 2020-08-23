@@ -26,14 +26,14 @@
         app:layout_constraintBottom_toTopOf="@id/txtName"
         android:layout_margin="@dimen/dimMarginPadding"
         android:contentDescription="@string/ph_imageviewdescription"
-        android:id="@+id/imgCamp"
+        android:id="@+id/imgCampionato"
         />
     <!--android:visibility="invisible"-->
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/box"
-        app:layout_constraintTop_toBottomOf="@id/imgCamp"
+        app:layout_constraintTop_toBottomOf="@id/imgCampionato"
         app:layout_constraintRight_toRightOf="@id/box"
         android:gravity="center"
         android:textSize="@dimen/dimText"
@@ -48,7 +48,7 @@
         android:gravity="center"
         app:layout_constraintLeft_toLeftOf="@id/box"
         app:layout_constraintBottom_toBottomOf="@id/box"
-        app:layout_constraintRight_toLeftOf="@id/txtRacers"
+        app:layout_constraintRight_toLeftOf="@id/txtIscritti"
         app:layout_constraintTop_toBottomOf="@id/txtName"
         android:text="@string/ph_subscription"
         android:textColor="@color/colorPrimaryDark"
@@ -68,7 +68,7 @@
         android:layout_margin="@dimen/dimMarginPadding"
         android:padding="@dimen/dimMarginPadding"
         android:background="@drawable/little_box"
-        android:id="@+id/txtRacers"
+        android:id="@+id/txtIscritti"
         />
     <TextView
         android:textColor="@color/colorPrimaryDark"
@@ -76,13 +76,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/txtName"
         app:layout_constraintBottom_toBottomOf="@id/box"
-        app:layout_constraintLeft_toRightOf="@id/txtRacers"
+        app:layout_constraintLeft_toRightOf="@id/txtIscritti"
         app:layout_constraintRight_toRightOf="@id/box"
         android:layout_margin="@dimen/dimMarginPadding"
         android:text="2/3 CORSE"
         android:padding="@dimen/dimMarginPadding"
         android:background="@drawable/little_box"
-        android:id="@+id/txtRaces"
+        android:id="@+id/txtGare"
         />
 
 

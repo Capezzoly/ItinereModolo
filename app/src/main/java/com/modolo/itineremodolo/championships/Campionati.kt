@@ -12,7 +12,6 @@ package com.modolo.itineremodolo.championships
 
 
 data class Campionati (
-
 	val id : String,
 	val nome : String,
 	val logo : String,

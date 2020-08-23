@@ -18,9 +18,9 @@ import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 
-class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
+class CampionatiFragment : Fragment(), CampionatiAdapter.CampionatiListener,
     AdapterView.OnItemSelectedListener {
-    var championships = mutableListOf<Champ>()
+    //var campionati = mutableListOf<Campionati>()
 
     companion object {
         fun newInstance() =
@@ -35,20 +35,16 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.campionati_fragment, container, false)
-        createDummyData()
-        val champs = view.findViewById<RecyclerView>(R.id.championships)
-        val adapterChamps = ChampAdapter(requireContext(), championships, this)
-        champs.adapter = adapterChamps
-
-
         val text = FileHelper.getData(requireContext(), "campionati.json")
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
         val adapter: JsonAdapter<List<Campionati>> = moshi.adapter(listTypeCampionati)
         val campionati: List<Campionati>? = adapter.fromJson(text)
-        Log.i("tazza", campionati.toString())
+        val view = inflater.inflate(R.layout.campionati_fragment, container, false)
+        val campionatiRecycle = view.findViewById<RecyclerView>(R.id.recycleCampionati)
+        val adapterChamps = CampionatiAdapter(requireContext(), campionati, this)
+        campionatiRecycle.adapter = adapterChamps
 
         return view
     }
@@ -59,16 +55,8 @@ class CampionatiFragment : Fragment(), ChampAdapter.ChampListener,
         // TODO: Use the ViewModel
     }
 
-    fun createDummyData() {
-        championships.add(Champ(0, "CAMPIONATO 0", "todo", 4, 6, true))
-        championships.add(Champ(1, "CAMPIONATO 1", "todo", 8, 1, false))
-        championships.add(Champ(2, "CAMPIONATO 2", "todo", 4, 6, true))
-        championships.add(Champ(3, "CAMPIONATO 3", "todo", 8, 1, false))
-
-    }
-
-    override fun onChampListener(champ: Champ, position: Int) {
-        val intent = Intent(requireContext(), ChampionshipActivity::class.java)
+    override fun onCampionatiListener(campionato: Campionati, position: Int) {
+        val intent = Intent(requireContext(), CampionatoActivity::class.java)
         startActivity(intent)
     }
 

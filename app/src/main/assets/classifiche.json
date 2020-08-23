@@ -128,5 +128,70 @@
           "punti": 10
         }
       ]
-    }
-  ]
+    },
+  {
+    "id": "2",
+    "nome": "Leon Supercopa",
+    "logo": "logo-champ-0.png",
+    "classificapiloti": [
+      {
+        "nome": "Roberto Cosi",
+        "team": "Busters eRacing Team",
+        "auto": "Seat Leon",
+        "punti": 50
+      },
+      {
+        "nome": "Giacomo Lapadula",
+        "team": "Naja Racing Italia",
+        "auto": "Seat Leon",
+        "punti": 34
+      },
+      {
+        "nome": "Andrea Crespi",
+        "team": "Handy Racing Team",
+        "auto": "Seat Leon",
+        "punti": 21
+      },
+      {
+        "nome": "Gennaro Deiulis",
+        "team": "Team SSD",
+        "auto": "Seat Leon",
+        "punti": 12
+      },
+      {
+        "nome": "Fabio Narduzzo",
+        "team": "Busters eRacing Team",
+        "auto": "Seat Leon",
+        "punti": 32
+      },
+      {
+        "nome": "Roberto Contino",
+        "team": "Handy Racing Team",
+        "auto": "Seat Leon",
+        "punti": 25
+      }
+    ],
+    "classificateam": [
+      {
+        "team": "Busters eRacing Team",
+        "auto": "Seat Leon",
+        "punti": 82
+      },
+      {
+        "team": "Naja Racing Italia",
+        "auto": "Seat Leon",
+        "punti": 34
+      },
+      {
+        "team": "Handy Racing Team",
+        "auto": "Seat Leon",
+        "punti": 46
+      },
+      {
+        "team": "Team SSD",
+        "auto": "Seat Leon",
+        "punti": 12
+      }
+    ]
+  }
+]

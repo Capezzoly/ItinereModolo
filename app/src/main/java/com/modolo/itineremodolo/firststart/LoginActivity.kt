@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
             it.forEach {
                 if (it.sess == 1) {
                     val intent = Intent(baseContext, MainActivity::class.java)
+                    intent.putExtra("utente", it)
                     this.finish()
                     startActivity(intent)
                     return@forEach
@@ -35,13 +36,15 @@ class LoginActivity : AppCompatActivity() {
                 ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
             txtLoginPsw.background = txtLoginEmail.background
             var login = false
-            loginViewModel.userList.observe(this, Observer {
+            loginViewModel.userList.observe(this, Observer { it ->
                 it.forEach {
                     if (it.mail == txtLoginEmail.text.toString()) {
                         if (it.pass == txtLoginPsw.text.toString()) {
                             login = true
                             loginViewModel.login(it.mail)
                             val intent = Intent(baseContext, MainActivity::class.java)
+                            intent.putExtra("utente", it)
+                            this.finish()
                             startActivity(intent)
                             this.finish()
                             return@forEach

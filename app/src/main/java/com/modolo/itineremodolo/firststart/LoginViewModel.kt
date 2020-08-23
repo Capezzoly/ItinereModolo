@@ -33,5 +33,4 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
     fun logout() {
         db.logout()
     }
-
 }

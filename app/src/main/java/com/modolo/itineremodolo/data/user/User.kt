@@ -2,6 +2,7 @@ package com.modolo.itineremodolo.data.user
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "users")
 data class User(
@@ -17,4 +18,4 @@ data class User(
     val hcir: String,
     val fcar: String,
     val iscr: String
-)
+): Serializable

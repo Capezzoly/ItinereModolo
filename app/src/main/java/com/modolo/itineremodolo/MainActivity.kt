@@ -2,9 +2,9 @@ package com.modolo.itineremodolo
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.modolo.itineremodolo.firststart.SignupActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,12 +30,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(navigationListener)
-
         fab.setOnClickListener {
             val intent = Intent(baseContext, SignupActivity::class.java)
             startActivity(intent)
         }
     }
-
-
 }

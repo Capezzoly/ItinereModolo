@@ -2,6 +2,7 @@ package com.modolo.itineremodolo.ui.campionati
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.modolo.itineremodolo.*
 import com.modolo.itineremodolo.campionati.*
+import com.modolo.itineremodolo.data.user.User
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -20,13 +22,6 @@ import java.text.SimpleDateFormat
 
 class CampionatiFragment : Fragment(), CampionatiAdapter.CampionatiListener,
     AdapterView.OnItemSelectedListener {
-    //var campionati = mutableListOf<com.modolo.itineremodolo.classifiche.Campionati>()
-
-    companion object {
-        fun newInstance() =
-            CampionatiFragment()
-    }
-
     private lateinit var viewModel: CampionatiViewModel
     val listTypeCampionati = Types.newParameterizedType(
         List::class.java, Campionati::class.java
@@ -35,8 +30,6 @@ class CampionatiFragment : Fragment(), CampionatiAdapter.CampionatiListener,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         val text = FileHelper.getData(requireContext(), "campionati.json")
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
@@ -70,6 +63,8 @@ class CampionatiFragment : Fragment(), CampionatiAdapter.CampionatiListener,
 
     override fun onCampionatiListener(campionato: Campionati, position: Int) {
         val intent = Intent(requireContext(), CampionatoActivity::class.java)
+        val utente = intent.getSerializableExtra("utente") as? User
+        Log.i("debuggalo", utente.toString())
         intent.putExtra("campionato", campionato)
         startActivity(intent)
     }

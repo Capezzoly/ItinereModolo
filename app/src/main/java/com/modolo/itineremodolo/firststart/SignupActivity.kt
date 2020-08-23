@@ -136,6 +136,7 @@ class SignupActivity : AppCompatActivity() {
                     )
                     loginViewModel.insertUser(new)
                     val intent = Intent(baseContext, MainActivity::class.java)
+                    intent.putExtra("utente", new)
                     this.finish()
                     startActivity(intent)
                 } else {

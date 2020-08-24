@@ -19,21 +19,24 @@ class UserRepository(val app: Application) {
                 //caso in cui il db sia vuoto
                 userDAO.insertUser(
                     User(
-                        "miraxh@gmail.com",
+                        "mario.rossi@gmail.com",
                         0,
-                        "pleb",
-                        "Miraxh",
-                        "Tereziu",
+                        "test",
+                        "Mario",
+                        "Rossi",
                         "28/02/1998",
                         "45",
                         "Circuito Preferito",
                         "Circuito Odiato",
-                        "Maggiolino"
+                        "Maggiolino",
+                        "",
+                        "",
+                        ""
                     )
                 )
                 userDAO.insertUser(
                     User(
-                        "davide.modolo@studenti.unitn.it",
+                        "davide.modolo@gmail.com",
                         0,
                         "admin",
                         "Davide",
@@ -42,21 +45,27 @@ class UserRepository(val app: Application) {
                         "69",
                         "Circuito Preferito",
                         "Circuito Odiato",
-                        "Batmobile"
+                        "Batmobile",
+                        "1",
+                        "Mercedes Classe A",
+                        "Team Picko"
                     )
                 )
                 userDAO.insertUser(
                     User(
-                        "molly@gmail.com",
+                        "stefano.verdi@gmail.com",
                         0,
-                        "pleb2",
-                        "Luca",
-                        "Mosetti",
+                        "test2",
+                        "Stefano",
+                        "Verdi",
                         "17/10/1998",
                         "420",
                         "Circuito Preferito",
                         "Circuito Odiato",
-                        "Hotweels"
+                        "Hotweels",
+                        "",
+                        "",
+                        ""
                     )
                 )
                 val data2: List<User>? = userDAO.getAll()
@@ -98,6 +107,12 @@ class UserRepository(val app: Application) {
         }
     }
 
+    fun updateSub(caid: String, cama: String, cate:String){
+        CoroutineScope(Dispatchers.IO).launch {
+            userDAO.updateSubscription(caid, cama, cate)
+        }
+    }
+
     fun updateUser(user: User) {
         CoroutineScope(Dispatchers.IO).launch {
             userDAO.updateUser(
@@ -114,9 +129,4 @@ class UserRepository(val app: Application) {
         }
     }
 
-    fun dummyData() {
-        CoroutineScope(Dispatchers.IO).launch {
-
-        }
-    }
 }

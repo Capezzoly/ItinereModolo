@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.firststart
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.modolo.itineremodolo.MainActivity
+import com.modolo.itineremodolo.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -20,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
             it.forEach {
                 if (it.sess == 1) {
                     val intent = Intent(baseContext, MainActivity::class.java)
+                    intent.putExtra("utente", it)
                     this.finish()
                     startActivity(intent)
                     return@forEach
@@ -33,13 +36,15 @@ class LoginActivity : AppCompatActivity() {
                 ResourcesCompat.getDrawable(this.resources, R.drawable.little_box, null)
             txtLoginPsw.background = txtLoginEmail.background
             var login = false
-            loginViewModel.userList.observe(this, Observer {
+            loginViewModel.userList.observe(this, Observer { it ->
                 it.forEach {
                     if (it.mail == txtLoginEmail.text.toString()) {
                         if (it.pass == txtLoginPsw.text.toString()) {
                             login = true
                             loginViewModel.login(it.mail)
                             val intent = Intent(baseContext, MainActivity::class.java)
+                            intent.putExtra("utente", it)
+                            this.finish()
                             startActivity(intent)
                             this.finish()
                             return@forEach
@@ -74,8 +79,5 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "PASSWORD DIMENTICATA", Toast.LENGTH_SHORT).show()
         }
 
-        imgSocial.setOnClickListener {
-            Toast.makeText(this, "LOGIN CON SOCIAL", Toast.LENGTH_SHORT).show()
-        }
     }
 }

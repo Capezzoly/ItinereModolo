@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.firststart
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -11,12 +11,15 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.modolo.itineremodolo.MainActivity
+import com.modolo.itineremodolo.R
 import com.modolo.itineremodolo.data.user.User
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignupActivity : AppCompatActivity() {
-
-
+    var caid = ""
+    var cama = ""
+    var cate = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -40,6 +43,9 @@ class SignupActivity : AppCompatActivity() {
                     hateCircuit.setText(it.hcir)
                     btnSignup.text = "SALVA MODIFICHE"
                     txtNoSnitch.text = "LOGOUT"
+                    caid =it.caid
+                    cama =it.cama
+                    cate =it.cate
                     return@forEach
                 }
             }
@@ -68,7 +74,10 @@ class SignupActivity : AppCompatActivity() {
                     favNumber.text.toString(),
                     favCircuit.text.toString(),
                     hateCircuit.text.toString(),
-                    favCar.text.toString()
+                    favCar.text.toString(),
+                    caid,
+                    cama,
+                    cate
                 )
                 loginViewModel.updateUser(mod)
                 this.finish()
@@ -128,10 +137,14 @@ class SignupActivity : AppCompatActivity() {
                         favNumber.text.toString(),
                         favCircuit.text.toString(),
                         hateCircuit.text.toString(),
-                        favCar.text.toString()
+                        favCar.text.toString(),
+                        caid,
+                        cama,
+                        cate
                     )
                     loginViewModel.insertUser(new)
                     val intent = Intent(baseContext, MainActivity::class.java)
+                    intent.putExtra("utente", new)
                     this.finish()
                     startActivity(intent)
                 } else {

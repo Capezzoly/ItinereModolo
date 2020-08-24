@@ -1,4 +1,4 @@
-package com.modolo.itineremodolo
+package com.modolo.itineremodolo.firststart
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -34,4 +34,7 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
         db.logout()
     }
 
+    fun updateSub(caid: String, cama: String, cate: String){
+        db.updateSub(caid, cama, cate)
+    }
 }

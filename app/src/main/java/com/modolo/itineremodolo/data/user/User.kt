@@ -17,5 +17,7 @@ data class User(
     val fcir: String,
     val hcir: String,
     val fcar: String,
-    val iscr: String
+    val caid: String,
+    val cama: String,
+    val cate: String
 ): Serializable

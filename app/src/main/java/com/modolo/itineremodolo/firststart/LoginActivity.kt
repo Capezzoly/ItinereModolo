@@ -79,8 +79,5 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "PASSWORD DIMENTICATA", Toast.LENGTH_SHORT).show()
         }
 
-        imgSocial.setOnClickListener {
-            Toast.makeText(this, "LOGIN CON SOCIAL", Toast.LENGTH_SHORT).show()
-        }
     }
 }

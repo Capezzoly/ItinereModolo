@@ -33,4 +33,8 @@ class LoginViewModel(val app: Application) : AndroidViewModel(app) {
     fun logout() {
         db.logout()
     }
+
+    fun updateSub(caid: String, cama: String, cate: String){
+        db.updateSub(caid, cama, cate)
+    }
 }

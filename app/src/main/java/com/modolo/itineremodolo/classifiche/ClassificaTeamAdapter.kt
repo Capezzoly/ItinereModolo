@@ -10,7 +10,8 @@ import com.modolo.itineremodolo.R
 
 class ClassificaTeamAdapter (val context: Context, val classificaTeam: List<Classificateam>?) : RecyclerView.Adapter<ClassificaTeamAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val teamText: TextView = itemView.findViewById(R.id.txtItemTeamRanking)
+        val teamText: TextView = itemView.findViewById(R.id.txtItemTeamRankingNome)
+        val punteggio: TextView = itemView.findViewById(R.id.txtItemTeamRankingPunti)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,7 +25,8 @@ class ClassificaTeamAdapter (val context: Context, val classificaTeam: List<Clas
         val team = classificaTeam?.get(position)
         with(holder) {
             if(team!=null) {
-                teamText.text="("+team.punti+") "+team.team+": "+team.auto
+                teamText.text=team.team+": "+team.auto
+                punteggio.text=team.punti
             }
         }
     }

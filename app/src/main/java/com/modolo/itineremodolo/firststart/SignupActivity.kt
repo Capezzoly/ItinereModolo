@@ -17,7 +17,9 @@ import com.modolo.itineremodolo.data.user.User
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignupActivity : AppCompatActivity() {
-    var iscr = ""
+    var caid = ""
+    var cama = ""
+    var cate = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -41,7 +43,9 @@ class SignupActivity : AppCompatActivity() {
                     hateCircuit.setText(it.hcir)
                     btnSignup.text = "SALVA MODIFICHE"
                     txtNoSnitch.text = "LOGOUT"
-                    iscr =it.iscr
+                    caid =it.caid
+                    cama =it.cama
+                    cate =it.cate
                     return@forEach
                 }
             }
@@ -71,7 +75,9 @@ class SignupActivity : AppCompatActivity() {
                     favCircuit.text.toString(),
                     hateCircuit.text.toString(),
                     favCar.text.toString(),
-                    iscr
+                    caid,
+                    cama,
+                    cate
                 )
                 loginViewModel.updateUser(mod)
                 this.finish()
@@ -132,7 +138,9 @@ class SignupActivity : AppCompatActivity() {
                         favCircuit.text.toString(),
                         hateCircuit.text.toString(),
                         favCar.text.toString(),
-                        iscr
+                        caid,
+                        cama,
+                        cate
                     )
                     loginViewModel.insertUser(new)
                     val intent = Intent(baseContext, MainActivity::class.java)

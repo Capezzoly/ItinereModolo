@@ -30,7 +30,7 @@ class CalendarioAdapter (val context: Context, val gare: List<Calendario>?) : Re
                 if(dataParsed.time > System.currentTimeMillis()) {
                     gareText.setTypeface(null, Typeface.BOLD)
                 }
-                gareText.text="["+gara.seq+"] "+gara.circuito+": "+gara.data
+                gareText.text=gara.seq+". "+gara.circuito+": "+gara.data
             }
         }
     }

@@ -1,14 +1,20 @@
 package com.modolo.itineremodolo.campionati
 
 import android.content.Context
+
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.modolo.itineremodolo.R
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.modolo.itineremodolo.firststart.LoginViewModel
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.*
 
 class CampionatiAdapter(

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.modolo.itineremodolo.R
-import com.modolo.itineremodolo.campionati.PilotiAdapter
-import com.modolo.itineremodolo.campionati.Pilotiiscritti
 
 class ClassificaPilotiAdapter(val context: Context, val classificaPiloti: List<Classificapiloti>) : RecyclerView.Adapter<ClassificaPilotiAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val pilotiText: TextView = itemView.findViewById(R.id.txtItemPilotiRanking)
+        val pilotiText: TextView = itemView.findViewById(R.id.txtItemPilotiRankingNome)
+        val pilotiteamText: TextView = itemView.findViewById(R.id.txtItemPilotiRankingTeam)
+        val punteggio: TextView = itemView.findViewById(R.id.txtItemPilotiRankingPunti)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,7 +26,9 @@ class ClassificaPilotiAdapter(val context: Context, val classificaPiloti: List<C
         val pilota = classificaPiloti?.get(position)
         with(holder) {
             if(pilota!=null) {
-                pilotiText.text="("+pilota.punti+") "+pilota.nome+" ("+pilota.team+"): "+pilota.auto
+                pilotiText.text=pilota.nome+": "+pilota.auto
+                pilotiteamText.text=pilota.team
+                punteggio.text=pilota.punti
             }
         }
     }

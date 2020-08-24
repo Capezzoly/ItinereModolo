@@ -63,8 +63,6 @@ class CampionatiFragment : Fragment(), CampionatiAdapter.CampionatiListener,
 
     override fun onCampionatiListener(campionato: Campionati, position: Int) {
         val intent = Intent(requireContext(), CampionatoActivity::class.java)
-        val utente = intent.getSerializableExtra("utente") as? User
-        Log.i("debuggalo", utente.toString())
         intent.putExtra("campionato", campionato)
         startActivity(intent)
     }

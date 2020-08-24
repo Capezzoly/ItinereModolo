@@ -10,7 +10,8 @@ import com.modolo.itineremodolo.R
 
 class PilotiAdapter (val context: Context, val piloti: List<Pilotiiscritti>?) : RecyclerView.Adapter<PilotiAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val pilotiText: TextView = itemView.findViewById(R.id.txtItemPiloti)
+        val pilotiText: TextView = itemView.findViewById(R.id.txtItemPilotiNome)
+        val pilotiteamText: TextView = itemView.findViewById(R.id.txtItemPilotiTeam)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,7 +25,8 @@ class PilotiAdapter (val context: Context, val piloti: List<Pilotiiscritti>?) : 
         val pilota = piloti?.get(position)
         with(holder) {
             if(pilota!=null) {
-                pilotiText.text="- "+pilota.nome+" ("+pilota.team+"): "+pilota.auto
+                pilotiText.text=pilota.nome+": "+pilota.auto
+                pilotiteamText.text=pilota.team
             }
         }
     }
